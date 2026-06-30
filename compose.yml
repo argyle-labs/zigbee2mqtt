@@ -1,0 +1,9 @@
+services:
+  zigbee2mqtt:
+    image: ghcr.io/scottdkey/zigbee2mqtt:latest
+    container_name: zigbee2mqtt
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - /opt/zigbee2mqtt/config:/config
