@@ -2,6 +2,10 @@
 name = "zigbee2mqtt"
 version = "0.1.0"
 edition = "2021"
+description = "Zigbee-to-MQTT bridge — orca service-backend"
+
+[package.metadata.orca]
+category = "home"
 
 [lib]
 name = "zigbee2mqtt"
