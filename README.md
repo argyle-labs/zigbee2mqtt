@@ -14,7 +14,7 @@ This repo is **self-contained** — the steps below run zigbee2mqtt **by hand, w
 
 ## Run it without orca
 
-### Docker / Podman
+### Docker Compose
 
 ```yaml
 # compose.yml
@@ -34,7 +34,27 @@ services:
 docker compose up -d
 ```
 
-Podman: the same file with `podman-compose up -d`.
+### Other runtimes
+
+**Podman** — the compose above works with `podman compose up -d`, or run it directly:
+
+```sh
+podman run -d --name zigbee2mqtt --restart unless-stopped \
+    -p 8080:8080/tcp \
+    -v ./data:/app/data \
+    -v /run/udev:/run/udev:ro \
+    koenkk/zigbee2mqtt:latest
+```
+
+**LXC** — on a container-capable LXC (e.g. a Proxmox LXC with nesting enabled) run the same image via Docker/Podman as above, or install zigbee2mqtt from upstream directly on the guest: <https://www.zigbee2mqtt.io/>.
+
+**VM** — install zigbee2mqtt from upstream (<https://www.zigbee2mqtt.io/>) or run the same container image inside the VM; expose port `8080`.
+
+**Unraid** — add via *Community Applications*, or *Docker → Add Container* with image `koenkk/zigbee2mqtt:latest`, port `8080`, and the volume paths above.
+
+### Dependencies
+
+Requires an MQTT broker (see the `mqtt` plugin) and a supported Zigbee coordinator (USB) passed through to the container.
 
 ### Ports & data
 
