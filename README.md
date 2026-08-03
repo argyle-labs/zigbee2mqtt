@@ -77,14 +77,14 @@ orca drives this plugin through the single generic `service.*` surface — no pe
 
 ```sh
 orca service.deploy zigbee2mqtt      # render + launch on any supported runtime
-orca service.status zigbee2mqtt      # health + rich diagnostics (typed payload)
+orca service.status zigbee2mqtt      # health + rich diagnostics (typed payload) — planned
 orca service.backup zigbee2mqtt      # location-agnostic backup (tar; PBS on Proxmox)
-orca service.configure zigbee2mqtt   # apply config via the upstream API
+orca service.configure zigbee2mqtt   # apply config via the upstream API — planned
 ```
 
 ## Layout
 
-- `src/` — the plugin (pure Rust): the `ServiceBackend` descriptor + `configure` / `status`.
+- `src/` — the plugin (pure Rust): the `ServiceBackend` descriptor + `configure` / `status` (planned).
 - `docs/` — standalone operator notes.
 - [CAPABILITIES.md](CAPABILITIES.md) — the service-backend contract checklist.
 - `assets/` — plugin icon.
