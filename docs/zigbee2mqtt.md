@@ -29,6 +29,7 @@ The Zigbee USB dongle is passed through from <host> to LXC 107. The device appea
 In `/etc/pve/lxc/107.conf` on <host>:
 ```ini
 lxc.cgroup2.devices.allow: c 188:* rwm
+lxc.cgroup2.devices.allow: c 189:* rwm
 lxc.mount.entry: /dev/ttyUSB0 dev/ttyUSB0 none bind,optional,create=file
 ```
 
@@ -49,7 +50,7 @@ rc-service zigbee2mqtt status
 rc-service zigbee2mqtt restart
 
 # Logs
-logfile is typically /opt/zigbee2mqtt/data/log/
+# logs live under the data dir: /etc/zigbee2mqtt/log/
 ```
 
 ---
@@ -73,7 +74,7 @@ Config and device database are in `/etc/zigbee2mqtt/` inside the LXC. This path 
 mp1: /var/lib/zigbee2mqtt,mp=/etc/zigbee2mqtt
 ```
 
-Data lives on <host> (not <host>) so Zigbee stays operational if the NAS goes down. Survives LXC rebuilds — add `mp1` back to `107.conf` before starting a new LXC.
+Data lives on the Proxmox host's local filesystem (not the NAS) so Zigbee stays operational if the NAS goes down. Survives LXC rebuilds — add `mp1` back to the LXC's `.conf` before starting a new LXC.
 
 ---
 
