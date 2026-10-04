@@ -11,7 +11,7 @@ use plugin_toolkit::service::{
     WorkloadSpec,
 };
 
-/// zigbee2mqtt backend. Holds only the provider name; per-instance endpoint/creds
+/// zigbee2mqtt backend. Holds only the provider name; per-instance address/creds
 /// come from the instance id and `Routes` the generic `service.*` tools hand each op.
 #[derive(Debug, Clone)]
 pub struct Zigbee2mqttBackend {
